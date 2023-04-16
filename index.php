@@ -41,24 +41,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $secondname = validateFirstName('secondname');
 
     $email = validateEmail('email');
-}
+    
+    
+    $errors = [];
 
-$errors = [];
+    if($firstname == false) {
+        $errors[] = 'Пожалуйста, укажите имя';
+    }
 
-if($firstname == false) {
-    $errors[] = 'Пожалуйста, укажите имя';
-}
+    if($secondname == false) {
+        $errors[] = 'Пожалуйста, укажите фамилию';
+    }
 
-if($secondname == false) {
-    $errors[] = 'Пожалуйста, укажите фамилию';
-}
+    if($email == false) {
+        $errors[] = 'Пожалуйста, укажите почту';
+    }
 
-if($email == false) {
-    $errors[] = 'Пожалуйста, укажите почту';
-}
-
-if(!empty($errors)) {
-    foreach($errors as $error) {
-    echo $error . '<br/>';
+    if(!empty($errors)) {
+        foreach($errors as $error) {
+        echo $error . '<br/>';
+        }
     }
 }
